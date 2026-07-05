@@ -4,7 +4,7 @@ Minimal OpenGL simulation of a black hole.
 
 A black hole is an object with gravity so strong that nothing, not even light, can escape once it crosses the event horizon.
 
-![Black hole preview](image.png)
+![Black hole preview](assets/image.png)
 
 ## Requirements
 
