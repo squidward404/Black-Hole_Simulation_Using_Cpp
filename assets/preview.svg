@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="Black hole simulation preview">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#151515"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffcc66"/>
+      <stop offset="50%" stop-color="#ff7a18"/>
+      <stop offset="100%" stop-color="#ffcc66"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)"/>
+  <circle cx="600" cy="350" r="190" fill="none" stroke="url(#ring)" stroke-width="26" stroke-linecap="round" stroke-dasharray="900 180" transform="rotate(-18 600 350)" opacity="0.95"/>
+  <circle cx="600" cy="350" r="105" fill="url(#core)"/>
+  <ellipse cx="600" cy="350" rx="250" ry="70" fill="none" stroke="#ff8f1f" stroke-width="8" opacity="0.25"/>
+  <circle cx="600" cy="350" r="230" fill="none" stroke="#ffb347" stroke-width="2" opacity="0.14"/>
+  <text x="600" y="610" fill="#e6e6e6" font-family="Arial, Helvetica, sans-serif" font-size="38" text-anchor="middle">Black Hole Simulation Using C++</text>
+</svg>
