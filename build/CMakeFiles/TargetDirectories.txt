@@ -1,0 +1,3 @@
+/home/atomic/Documents/my-projects/Black-Hole_Simulation_Using_Cpp/build/CMakeFiles/simulator.dir
+/home/atomic/Documents/my-projects/Black-Hole_Simulation_Using_Cpp/build/CMakeFiles/edit_cache.dir
+/home/atomic/Documents/my-projects/Black-Hole_Simulation_Using_Cpp/build/CMakeFiles/rebuild_cache.dir
