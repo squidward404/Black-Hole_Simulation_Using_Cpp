@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/simulator.dir/src/main.cpp.o -o simulator  /usr/lib/x86_64-linux-gnu/libGL.so /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 /usr/lib/x86_64-linux-gnu/libGLEW.so 
