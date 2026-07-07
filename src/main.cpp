@@ -107,8 +107,8 @@ int main(){
     BlackHole black_hole;
     //store the multiple rays inside a vector
     std::vector<Rays> all_rays;
-    for (int i=0;i<50;i++){
-        float startY=-0.8+(i*0.04); //heights from -0.8 to 0.8
+    for (int i=0;i<70;i++){
+        float startY=-0.8+(i*0.03); //heights from -0.8 to 0.8
         all_rays.push_back(Rays(-1.5f, startY)); //start further left (-1.5)
     }
 
