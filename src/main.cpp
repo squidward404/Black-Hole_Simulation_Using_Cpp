@@ -4,7 +4,7 @@
 #include <glm/glm.hpp> //math library
 
 #include <iostream>
-
+#include <vector>
 #include <cmath> //need sqrt() and probably trig functions.
 
 /*classes*/
@@ -12,13 +12,9 @@ class BlackHole{
 public:
 
 //variables 
-float mass;
-float radius;
+float mass=0.1;
 
-BlackHole(float m) {
-        mass=m;
-        radius=2*mass; //schwarzschild radius(radius of the black hole is 2x of it's mass)
-    }
+float radius=2*mass; //schwarzschild radius(radius of a black hole is 2x of it's mass)
 
 //draw the circle for the hole
 void DrawCircle() {
@@ -40,9 +36,52 @@ void DrawCircle() {
 class Rays{
 public:
 
+//declaring 2d vector variables for position and directon
+glm::vec2 pos;
+glm::vec2 dir;
+
+bool active; //detect the collision with the hole
+std::vector<glm::vec2> path; //store history of positions
+
+//constractor function 
+Rays(float startX, float startY) {
+        pos = glm::vec2(startX,startY);
+        dir = glm::vec2(1,0); // Move along the x-axis (to the Right)
+        active = true;
+        path.push_back(pos); //save the starting point
+    }
+
+//draw the light rays
+void draw() {
+        // 3. Draw the trace (connect all saved points)
+        glColor3f(1.0f, 1.0f, 1.0f);
+        glBegin(GL_LINE_STRIP); 
+        for (const auto& point : path) {
+            glVertex2f(point.x, point.y);
+        }
+        glEnd();
+
+        //draw the moving dot at the end
+        glBegin(GL_POINTS);
+        glVertex2f(pos.x, pos.y);
+        glEnd();
+    }
+
+
+//controll movement of the light rays relative to position
+void update(){
+    if (!active) return;
+    pos = pos+dir*0.005f; 
+    path.push_back(pos);
+    if (pos.x > 1.2f) {
+            active = false;
+        }
+
+}
+
 };
 
-/*constants*/
+
 int main(){
 //start GLFW library
     if (!glfwInit()) {
@@ -61,10 +100,17 @@ int main(){
         return -1;
     }
 
-    //dark space blue grey(R=0.05,G=0.05,B=0.1)
-    glClearColor(0.05f,0.05f,0.1f,1.0f);    
-    BlackHole black_hole(0.1);
-    Rays ray;
+    //background-dark space blue grey(R=0.05,G=0.05,B=0.1)
+    glClearColor(0.05,0.05,0.1,1.0);  
+    
+    //instantiating objects
+    BlackHole black_hole;
+    //store the multiple rays inside a vector
+    std::vector<Rays> all_rays;
+    for (int i=0;i<50;i++){
+        float startY=-0.8+(i*0.04); //heights from -0.8 to 0.8
+        all_rays.push_back(Rays(-1.5f, startY)); //start further left (-1.5)
+    }
 
     while (!glfwWindowShouldClose(window)) {
 
@@ -72,8 +118,13 @@ int main(){
         glClear(GL_COLOR_BUFFER_BIT);
 
         /*The main code*/
+        //draw the circle
         black_hole.DrawCircle();
-
+        //print all rays in a loop
+        for(int i=0;i<all_rays.size();++i){
+        all_rays[i].update();
+        all_rays[i].draw();
+        }
         //swap the back buffer
         glfwSwapBuffers(window);
         
